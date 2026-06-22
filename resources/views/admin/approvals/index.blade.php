@@ -13,7 +13,7 @@
                         <div class="text-sm text-gray-500">By {{ $hotel->user->name }} &middot; {{ $hotel->user->email }}</div>
                     </div>
                     <div class="flex gap-2">
-                        <form action="{{ route('admin.approvals.approve-hotel', $hotel) }}" method="POST">@csrf @method('PATCH')<button class="bg-emerald-600 text-white px-4 py-2 rounded-lg text-sm hover:bg-emerald-700">Approve</button></form>
+                        <form action="{{ route('admin.approvals.approve-hotel', $hotel) }}" method="POST">@csrf @method('PATCH')<button class="bg-ghana-green text-white px-4 py-2 rounded-lg text-sm hover:bg-primary-700">Approve</button></form>
                         <form action="{{ route('admin.approvals.reject-hotel', $hotel) }}" method="POST">@csrf @method('PATCH')<button class="bg-red-600 text-white px-4 py-2 rounded-lg text-sm hover:bg-red-700">Reject</button></form>
                     </div>
                 </div>
@@ -33,7 +33,7 @@
                         <div class="text-sm text-gray-500">Licence: {{ $driver->licence_number }} &middot; {{ $driver->experience_years }} years exp.</div>
                     </div>
                     <div class="flex gap-2">
-                        <form action="{{ route('admin.approvals.approve-driver', $driver) }}" method="POST">@csrf @method('PATCH')<button class="bg-emerald-600 text-white px-4 py-2 rounded-lg text-sm hover:bg-emerald-700">Approve</button></form>
+                        <form action="{{ route('admin.approvals.approve-driver', $driver) }}" method="POST">@csrf @method('PATCH')<button class="bg-ghana-green text-white px-4 py-2 rounded-lg text-sm hover:bg-primary-700">Approve</button></form>
                         <form action="{{ route('admin.approvals.reject-driver', $driver) }}" method="POST">@csrf @method('PATCH')<button class="bg-red-600 text-white px-4 py-2 rounded-lg text-sm hover:bg-red-700">Reject</button></form>
                     </div>
                 </div>
@@ -53,7 +53,7 @@
                         <div class="text-sm text-gray-500">{{ $guide->experience_years }} years exp. &middot; GHS {{ number_format($guide->price_per_day, 2) }}/day</div>
                     </div>
                     <div class="flex gap-2">
-                        <form action="{{ route('admin.approvals.approve-guide', $guide) }}" method="POST">@csrf @method('PATCH')<button class="bg-emerald-600 text-white px-4 py-2 rounded-lg text-sm hover:bg-emerald-700">Approve</button></form>
+                        <form action="{{ route('admin.approvals.approve-guide', $guide) }}" method="POST">@csrf @method('PATCH')<button class="bg-ghana-green text-white px-4 py-2 rounded-lg text-sm hover:bg-primary-700">Approve</button></form>
                         <form action="{{ route('admin.approvals.reject-guide', $guide) }}" method="POST">@csrf @method('PATCH')<button class="bg-red-600 text-white px-4 py-2 rounded-lg text-sm hover:bg-red-700">Reject</button></form>
                     </div>
                 </div>

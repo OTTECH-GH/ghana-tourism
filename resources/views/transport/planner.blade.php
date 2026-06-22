@@ -1,10 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="bg-emerald-700 text-white py-12">
+<div class="bg-gradient-to-br from-ghana-green via-primary-700 to-primary-900 text-white py-16">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <h1 class="text-4xl font-bold">Multi-Destination Trip Planner</h1>
-        <p class="text-emerald-100 mt-2">Plan your perfect Ghana tourism trip visiting multiple sites.</p>
+        <p class="text-green-200 mt-2">Plan your perfect Ghana tourism trip visiting multiple sites.</p>
     </div>
 </div>
 
@@ -15,15 +15,15 @@
                 <h2 class="text-lg font-semibold text-gray-800 mb-4">Select Tourism Sites</h2>
                 <div class="space-y-3">
                     @foreach($tourismSites as $site)
-                        <label class="flex items-center justify-between p-3 rounded-lg border hover:bg-emerald-50 cursor-pointer transition">
+                        <label class="flex items-center justify-between p-3 rounded-lg border hover:bg-primary-700/5 cursor-pointer transition">
                             <div class="flex items-center">
-                                <input type="checkbox" value="{{ $site->id }}" data-name="{{ $site->name }}" data-region="{{ $site->region->name }}" data-fee="{{ $site->entry_fee }}" @change="toggleSite($event)" class="rounded text-emerald-600 mr-3">
+                                <input type="checkbox" value="{{ $site->id }}" data-name="{{ $site->name }}" data-region="{{ $site->region->name }}" data-fee="{{ $site->entry_fee }}" @change="toggleSite($event)" class="rounded text-ghana-green mr-3">
                                 <div>
                                     <span class="font-medium text-gray-800">{{ $site->name }}</span>
                                     <span class="text-sm text-gray-500 ml-2">{{ $site->region->name }}</span>
                                 </div>
                             </div>
-                            <span class="text-sm text-emerald-600 font-medium">GHS {{ number_format($site->entry_fee, 2) }}</span>
+                            <span class="text-sm text-ghana-green font-medium">GHS {{ number_format($site->entry_fee, 2) }}</span>
                         </label>
                     @endforeach
                 </div>
@@ -45,12 +45,12 @@
                     <div class="flex justify-between"><span class="text-gray-500">Est. Entry Fees</span><span x-text="'GHS ' + totalFees.toFixed(2)"></span></div>
                     <div class="flex justify-between"><span class="text-gray-500">Est. Transport</span><span x-text="'GHS ' + estimatedTransport.toFixed(2)"></span></div>
                     <hr>
-                    <div class="flex justify-between font-bold text-lg"><span>Total Estimate</span><span class="text-emerald-600" x-text="'GHS ' + totalEstimate.toFixed(2)"></span></div>
+                    <div class="flex justify-between font-bold text-lg"><span>Total Estimate</span><span class="text-ghana-green" x-text="'GHS ' + totalEstimate.toFixed(2)"></span></div>
                 </div>
                 @auth
-                    <a x-show="selectedSites.length > 0" href="{{ route('transport.book') }}" class="mt-4 block w-full bg-emerald-600 text-white text-center py-3 rounded-lg hover:bg-emerald-700">Book This Trip</a>
+                    <a x-show="selectedSites.length > 0" href="{{ route('transport.book') }}" class="mt-4 block w-full bg-ghana-green text-white text-center py-3 rounded-lg hover:bg-primary-700">Book This Trip</a>
                 @else
-                    <a x-show="selectedSites.length > 0" href="{{ route('login') }}" class="mt-4 block w-full bg-emerald-600 text-white text-center py-3 rounded-lg hover:bg-emerald-700">Login to Book</a>
+                    <a x-show="selectedSites.length > 0" href="{{ route('login') }}" class="mt-4 block w-full bg-ghana-green text-white text-center py-3 rounded-lg hover:bg-primary-700">Login to Book</a>
                 @endauth
             </div>
         </div>

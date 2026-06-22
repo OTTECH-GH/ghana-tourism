@@ -5,11 +5,11 @@
     <div class="flex justify-between items-center mb-8">
         <div>
             <h1 class="text-3xl font-bold text-gray-800">{{ $hotel->name }}</h1>
-            <p class="text-gray-500">Hotel Dashboard &middot; Status: <span class="font-medium {{ $hotel->status === 'approved' ? 'text-emerald-600' : 'text-yellow-600' }}">{{ ucfirst($hotel->status) }}</span></p>
+            <p class="text-gray-500">Hotel Dashboard &middot; Status: <span class="font-medium {{ $hotel->status === 'approved' ? 'text-ghana-green' : 'text-yellow-600' }}">{{ ucfirst($hotel->status) }}</span></p>
         </div>
         <div class="flex gap-3">
             <a href="{{ route('hotel-admin.rooms') }}" class="bg-white border border-gray-300 text-gray-700 px-4 py-2 rounded-lg hover:bg-gray-50 text-sm">Manage Rooms</a>
-            <a href="{{ route('hotel-admin.bookings') }}" class="bg-emerald-600 text-white px-4 py-2 rounded-lg hover:bg-emerald-700 text-sm">View Bookings</a>
+            <a href="{{ route('hotel-admin.bookings') }}" class="bg-ghana-green text-white px-4 py-2 rounded-lg hover:bg-primary-700 text-sm">View Bookings</a>
         </div>
     </div>
 
@@ -38,11 +38,11 @@
                     <div class="text-sm text-gray-500">{{ $b->room->room_type }} &middot; {{ $b->check_in_date->format('M d') }} - {{ $b->check_out_date->format('M d') }}</div>
                 </div>
                 <div class="flex items-center gap-3">
-                    <span class="font-bold text-emerald-600">GHS {{ number_format($b->total_amount, 2) }}</span>
+                    <span class="font-bold text-ghana-green">GHS {{ number_format($b->total_amount, 2) }}</span>
                     @if($b->status === 'pending')
-                        <form action="{{ route('hotel-admin.bookings.confirm', $b) }}" method="POST" class="inline">@csrf @method('PATCH')<button class="text-emerald-600 text-sm hover:text-emerald-800">Confirm</button></form>
+                        <form action="{{ route('hotel-admin.bookings.confirm', $b) }}" method="POST" class="inline">@csrf @method('PATCH')<button class="text-ghana-green text-sm hover:text-primary-700">Confirm</button></form>
                     @endif
-                    <span class="px-2 py-1 rounded text-xs {{ $b->status === 'confirmed' ? 'bg-emerald-100 text-emerald-700' : 'bg-yellow-100 text-yellow-700' }}">{{ ucfirst($b->status) }}</span>
+                    <span class="px-2 py-1 rounded text-xs {{ $b->status === 'confirmed' ? 'bg-green-50 text-ghana-green' : 'bg-yellow-100 text-yellow-700' }}">{{ ucfirst($b->status) }}</span>
                 </div>
             </div>
         @empty
