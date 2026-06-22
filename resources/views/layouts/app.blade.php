@@ -64,7 +64,7 @@
                                 <div class="max-h-72 overflow-y-auto divide-y">
                                     @forelse(Auth::user()->notifications()->latest()->take(5)->get() as $notification)
                                         <div class="px-4 py-3 hover:bg-gray-50 {{ $notification->is_read ? '' : 'bg-ghana-gold/5' }}">
-                                            <p class="text-sm text-gray-700">{{ $notification->data['message'] ?? 'New notification' }}</p>
+                                            <p class="text-sm text-gray-700">{{ $notification->message ?? ($notification->data['message'] ?? 'New notification') }}</p>
                                             <p class="text-xs text-gray-400 mt-1">{{ $notification->created_at->diffForHumans() }}</p>
                                         </div>
                                     @empty
