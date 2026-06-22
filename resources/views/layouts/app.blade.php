@@ -52,8 +52,9 @@
                         <div class="relative" x-data="{ notifOpen: false }">
                             <button @click="notifOpen = !notifOpen" class="relative text-gray-500 hover:text-ghana-green transition">
                                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/></svg>
-                                @if(Auth::user()->unreadNotifications && Auth::user()->unreadNotifications->count() > 0)
-                                    <span class="absolute -top-1 -right-1 w-4 h-4 bg-ghana-red text-white text-[10px] font-bold rounded-full flex items-center justify-center">{{ Auth::user()->unreadNotifications->count() }}</span>
+                                @php $unreadCount = Auth::user()->notifications()->where('is_read', false)->count(); @endphp
+                                @if($unreadCount > 0)
+                                    <span class="absolute -top-1 -right-1 w-4 h-4 bg-ghana-red text-white text-[10px] font-bold rounded-full flex items-center justify-center">{{ $unreadCount }}</span>
                                 @endif
                             </button>
                             <div x-show="notifOpen" @click.outside="notifOpen = false" x-cloak class="absolute right-0 mt-2 w-80 bg-white rounded-xl shadow-xl border z-50 overflow-hidden">
@@ -61,8 +62,8 @@
                                     <span class="font-semibold text-sm">Notifications</span>
                                 </div>
                                 <div class="max-h-72 overflow-y-auto divide-y">
-                                    @forelse(Auth::user()->notifications()->take(5)->get() as $notification)
-                                        <div class="px-4 py-3 hover:bg-gray-50 {{ $notification->read_at ? '' : 'bg-ghana-gold/5' }}">
+                                    @forelse(Auth::user()->notifications()->latest()->take(5)->get() as $notification)
+                                        <div class="px-4 py-3 hover:bg-gray-50 {{ $notification->is_read ? '' : 'bg-ghana-gold/5' }}">
                                             <p class="text-sm text-gray-700">{{ $notification->data['message'] ?? 'New notification' }}</p>
                                             <p class="text-xs text-gray-400 mt-1">{{ $notification->created_at->diffForHumans() }}</p>
                                         </div>
