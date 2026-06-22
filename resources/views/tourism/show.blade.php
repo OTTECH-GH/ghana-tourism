@@ -1,9 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="bg-gradient-to-br from-emerald-700 to-teal-600 text-white py-12">
+<div class="bg-gradient-to-br from-ghana-green via-primary-700 to-primary-900 text-white py-16">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <nav class="text-emerald-200 text-sm mb-4">
+        <nav class="text-green-200 text-sm mb-4">
             <a href="{{ route('tourism.index') }}" class="hover:text-white">Tourism Sites</a>
             <span class="mx-2">/</span>
             <a href="{{ route('tourism.region', $tourismSite->region) }}" class="hover:text-white">{{ $tourismSite->region->name }}</a>
@@ -14,11 +14,11 @@
             <div>
                 <span class="bg-white/20 px-3 py-1 rounded-full text-sm">{{ $tourismSite->category->name }}</span>
                 <h1 class="text-4xl font-bold mt-3">{{ $tourismSite->name }}</h1>
-                <p class="text-emerald-100 mt-2">{{ $tourismSite->region->name }}{{ $tourismSite->district ? ', ' . $tourismSite->district->name : '' }}</p>
+                <p class="text-green-200 mt-2">{{ $tourismSite->region->name }}{{ $tourismSite->district ? ', ' . $tourismSite->district->name : '' }}</p>
             </div>
             <div class="text-right">
                 <div class="text-3xl font-bold">GHS {{ number_format($tourismSite->entry_fee, 2) }}</div>
-                <div class="text-emerald-200 text-sm">Entry Fee</div>
+                <div class="text-green-200 text-sm">Entry Fee</div>
             </div>
         </div>
     </div>
@@ -90,7 +90,7 @@
                         <div class="flex justify-between items-start">
                             <div>
                                 <span class="font-semibold text-gray-800">{{ $review->user->name }}</span>
-                                <div class="text-yellow-500 text-sm">@for($i = 0; $i < $review->rating; $i++)&#9733;@endfor</div>
+                                <div class="text-ghana-gold text-sm">@for($i = 0; $i < $review->rating; $i++)&#9733;@endfor</div>
                             </div>
                             <span class="text-sm text-gray-400">{{ $review->created_at->diffForHumans() }}</span>
                         </div>
@@ -110,7 +110,7 @@
                             <input type="hidden" name="reviewable_type" value="tourism_site">
                             <input type="hidden" name="reviewable_id" value="{{ $tourismSite->id }}">
                             <div class="mb-3">
-                                <select name="rating" class="rounded-lg border-gray-300 focus:ring-emerald-500" required>
+                                <select name="rating" class="rounded-lg border-gray-300 focus:ring-ghana-green" required>
                                     <option value="5">5 Stars</option>
                                     <option value="4">4 Stars</option>
                                     <option value="3">3 Stars</option>
@@ -118,8 +118,8 @@
                                     <option value="1">1 Star</option>
                                 </select>
                             </div>
-                            <textarea name="comment" rows="3" class="w-full rounded-lg border-gray-300 focus:ring-emerald-500" placeholder="Share your experience..."></textarea>
-                            <button type="submit" class="mt-2 bg-emerald-600 text-white px-6 py-2 rounded-lg hover:bg-emerald-700">Submit Review</button>
+                            <textarea name="comment" rows="3" class="w-full rounded-lg border-gray-300 focus:ring-ghana-green" placeholder="Share your experience..."></textarea>
+                            <button type="submit" class="mt-2 bg-ghana-green text-white px-6 py-2 rounded-lg hover:bg-primary-700">Submit Review</button>
                         </form>
                     </div>
                 @endauth
@@ -132,8 +132,8 @@
             <div class="bg-white rounded-xl p-6 shadow-sm">
                 <h3 class="font-bold text-gray-800 mb-4">Plan Your Visit</h3>
                 <div class="space-y-3">
-                    <a href="{{ route('hotels.index', ['region' => $tourismSite->region_id]) }}" class="block w-full bg-emerald-600 text-white text-center py-3 rounded-lg hover:bg-emerald-700 transition">Find Hotels Nearby</a>
-                    <a href="{{ route('transport.book') }}" class="block w-full border-2 border-emerald-600 text-emerald-600 text-center py-3 rounded-lg hover:bg-emerald-50 transition">Book Transport</a>
+                    <a href="{{ route('hotels.index', ['region' => $tourismSite->region_id]) }}" class="block w-full bg-ghana-green text-white text-center py-3 rounded-lg hover:bg-primary-700 transition">Find Hotels Nearby</a>
+                    <a href="{{ route('transport.book') }}" class="block w-full border-2 border-ghana-green text-ghana-green text-center py-3 rounded-lg hover:bg-primary-700/5 transition">Book Transport</a>
                 </div>
             </div>
 
@@ -146,7 +146,7 @@
                             <div class="font-medium text-gray-800">{{ $hotel->name }}</div>
                             <div class="text-sm text-gray-500">{{ $hotel->star_rating }} Stars</div>
                             @if($hotel->rooms->count() > 0)
-                                <div class="text-emerald-600 font-bold text-sm mt-1">From GHS {{ number_format($hotel->rooms->min('price_per_night'), 2) }}/night</div>
+                                <div class="text-ghana-green font-bold text-sm mt-1">From GHS {{ number_format($hotel->rooms->min('price_per_night'), 2) }}/night</div>
                             @endif
                         </a>
                     @endforeach

@@ -4,7 +4,7 @@
 @section('content')
 <div class="mb-4">
     <form class="flex gap-3">
-        <select name="status" onchange="this.form.submit()" class="rounded-lg border-gray-300 focus:ring-emerald-500">
+        <select name="status" onchange="this.form.submit()" class="rounded-lg border-gray-300 focus:ring-ghana-green">
             <option value="">All Statuses</option>
             @foreach(['pending','confirmed','cancelled','completed'] as $s)
                 <option value="{{ $s }}" {{ request('status') === $s ? 'selected' : '' }}>{{ ucfirst($s) }}</option>
@@ -32,8 +32,8 @@
                     <td class="px-4 py-3">{{ $b->hotel->name }}</td>
                     <td class="px-4 py-3">{{ $b->room->room_type }}</td>
                     <td class="px-4 py-3 text-gray-500">{{ $b->check_in_date->format('M d') }} - {{ $b->check_out_date->format('M d, Y') }}</td>
-                    <td class="px-4 py-3 font-bold text-emerald-600">GHS {{ number_format($b->total_amount, 2) }}</td>
-                    <td class="px-4 py-3"><span class="px-2 py-1 rounded text-xs {{ $b->status === 'confirmed' ? 'bg-emerald-100 text-emerald-700' : ($b->status === 'cancelled' ? 'bg-red-100 text-red-700' : 'bg-yellow-100 text-yellow-700') }}">{{ ucfirst($b->status) }}</span></td>
+                    <td class="px-4 py-3 font-bold text-ghana-green">GHS {{ number_format($b->total_amount, 2) }}</td>
+                    <td class="px-4 py-3"><span class="px-2 py-1 rounded text-xs {{ $b->status === 'confirmed' ? 'bg-green-50 text-ghana-green' : ($b->status === 'cancelled' ? 'bg-red-100 text-red-700' : 'bg-yellow-100 text-yellow-700') }}">{{ ucfirst($b->status) }}</span></td>
                 </tr>
             @endforeach
         </tbody>

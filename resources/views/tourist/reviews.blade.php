@@ -10,7 +10,7 @@
                 <div class="bg-white rounded-xl p-6 shadow-sm">
                     <div class="flex justify-between items-start">
                         <div>
-                            <div class="text-yellow-500">@for($i = 0; $i < $review->rating; $i++)&#9733;@endfor</div>
+                            <div class="text-ghana-gold">@for($i = 0; $i < $review->rating; $i++)&#9733;@endfor</div>
                             <p class="text-gray-600 mt-1">{{ $review->comment }}</p>
                             <p class="text-sm text-gray-400 mt-2">{{ $review->created_at->diffForHumans() }}</p>
                         </div>
