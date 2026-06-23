@@ -9,11 +9,19 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TourismSiteController;
 use App\Http\Controllers\Tourist;
 use App\Http\Controllers\TransportController;
+use App\Http\Controllers\PageController;
 use Illuminate\Support\Facades\Route;
 
 // Public Routes
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/search', [HomeController::class, 'search'])->name('search');
+
+// Static Pages
+Route::get('/about-ghana', [PageController::class, 'about'])->name('about');
+Route::get('/contact', [PageController::class, 'contact'])->name('contact');
+Route::post('/contact', [PageController::class, 'contactSubmit'])->name('contact.submit');
+Route::get('/faq', [PageController::class, 'faq'])->name('faq');
+Route::get('/emergency-contacts', [PageController::class, 'emergency'])->name('emergency');
 
 // Tourism Sites
 Route::get('/tourism-sites', [TourismSiteController::class, 'index'])->name('tourism.index');

@@ -1,9 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="bg-gradient-to-br from-blue-700 to-indigo-600 text-white py-12">
+<div class="bg-gradient-to-br from-ghana-green via-primary-700 to-primary-900 text-white py-16">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <nav class="text-blue-200 text-sm mb-4">
+        <nav class="text-green-200 text-sm mb-4">
             <a href="{{ route('hotels.index') }}" class="hover:text-white">Hotels</a>
             <span class="mx-2">/</span>
             <span>{{ $hotel->name }}</span>
@@ -11,13 +11,13 @@
         <div class="flex justify-between items-start flex-wrap gap-4">
             <div>
                 <h1 class="text-4xl font-bold">{{ $hotel->name }}</h1>
-                <p class="text-blue-100 mt-2">{{ $hotel->address }}, {{ $hotel->region->name }}</p>
-                <div class="text-yellow-400 mt-2">@for($i = 0; $i < $hotel->star_rating; $i++)&#9733;@endfor</div>
+                <p class="text-green-200 mt-2">{{ $hotel->address }}, {{ $hotel->region->name }}</p>
+                <div class="text-ghana-gold mt-2">@for($i = 0; $i < $hotel->star_rating; $i++)&#9733;@endfor</div>
             </div>
             @if($hotel->rooms->count() > 0)
                 <div class="text-right">
                     <div class="text-3xl font-bold">GHS {{ number_format($hotel->rooms->min('price_per_night'), 2) }}</div>
-                    <div class="text-blue-200 text-sm">per night from</div>
+                    <div class="text-green-200 text-sm">per night from</div>
                 </div>
             @endif
         </div>
@@ -40,7 +40,7 @@
                     <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
                         @foreach($hotel->facilities as $facility)
                             <div class="flex items-center text-gray-600">
-                                <svg class="w-4 h-4 text-emerald-500 mr-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                                <svg class="w-4 h-4 text-ghana-green mr-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
                                 {{ $facility }}
                             </div>
                         @endforeach
@@ -58,7 +58,7 @@
                                 <h3 class="font-bold text-gray-800 text-lg">{{ $room->room_type }}</h3>
                                 <p class="text-sm text-gray-500 mt-1">Max {{ $room->max_guests }} guests &middot; {{ $room->available_rooms }} available</p>
                                 @if($room->breakfast_included)
-                                    <span class="text-xs text-emerald-600 bg-emerald-50 px-2 py-1 rounded mt-2 inline-block">Breakfast Included</span>
+                                    <span class="text-xs text-ghana-green bg-ghana-green/5 px-2 py-1 rounded mt-2 inline-block">Breakfast Included</span>
                                 @endif
                                 @if($room->facilities)
                                     <div class="flex flex-wrap gap-1 mt-2">
@@ -69,16 +69,16 @@
                                 @endif
                             </div>
                             <div class="text-right">
-                                <div class="text-2xl font-bold text-emerald-600">GHS {{ number_format($room->price_per_night, 2) }}</div>
+                                <div class="text-2xl font-bold text-ghana-green">GHS {{ number_format($room->price_per_night, 2) }}</div>
                                 <div class="text-sm text-gray-500">per night</div>
                                 @auth
                                     @if($room->available_rooms > 0)
-                                        <a href="{{ route('hotels.book', $room) }}" class="mt-2 inline-block bg-emerald-600 text-white px-6 py-2 rounded-lg hover:bg-emerald-700 text-sm">Book Now</a>
+                                        <a href="{{ route('hotels.book', $room) }}" class="mt-2 inline-block bg-ghana-green text-white px-6 py-2 rounded-lg hover:bg-primary-700 text-sm font-semibold">Book Now</a>
                                     @else
                                         <span class="mt-2 inline-block bg-gray-300 text-gray-600 px-6 py-2 rounded-lg text-sm">Sold Out</span>
                                     @endif
                                 @else
-                                    <a href="{{ route('login') }}" class="mt-2 inline-block bg-emerald-600 text-white px-6 py-2 rounded-lg hover:bg-emerald-700 text-sm">Login to Book</a>
+                                    <a href="{{ route('login') }}" class="mt-2 inline-block bg-ghana-green text-white px-6 py-2 rounded-lg hover:bg-primary-700 text-sm font-semibold">Login to Book</a>
                                 @endauth
                             </div>
                         </div>
@@ -93,7 +93,7 @@
                     <div class="border-b pb-4 mb-4 last:border-0 last:pb-0 last:mb-0">
                         <div class="flex justify-between">
                             <span class="font-semibold text-gray-800">{{ $review->user->name }}</span>
-                            <span class="text-yellow-500 text-sm">@for($i = 0; $i < $review->rating; $i++)&#9733;@endfor</span>
+                            <span class="text-ghana-gold text-sm">@for($i = 0; $i < $review->rating; $i++)&#9733;@endfor</span>
                         </div>
                         @if($review->comment)
                             <p class="text-gray-600 mt-1">{{ $review->comment }}</p>

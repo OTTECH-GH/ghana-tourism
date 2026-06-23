@@ -34,7 +34,7 @@
                 @foreach($monthlyRevenue as $m)
                     <div class="flex justify-between items-center">
                         <span class="text-gray-700">Month {{ $m->month }}</span>
-                        <span class="font-bold text-emerald-600">GHS {{ number_format($m->total, 2) }}</span>
+                        <span class="font-bold text-ghana-green">GHS {{ number_format($m->total, 2) }}</span>
                     </div>
                 @endforeach
             </div>

@@ -21,7 +21,7 @@
                     <td class="px-4 py-3 capitalize">{{ str_replace('_', ' ', $b->vehicle_type) }}</td>
                     <td class="px-4 py-3">{{ $b->driver?->user->name ?? 'Unassigned' }}</td>
                     <td class="px-4 py-3 text-gray-500">{{ $b->trip_date->format('M d, Y') }}</td>
-                    <td class="px-4 py-3 font-bold text-emerald-600">GHS {{ number_format($b->final_amount ?? $b->estimated_amount, 2) }}</td>
+                    <td class="px-4 py-3 font-bold text-ghana-green">GHS {{ number_format($b->final_amount ?? $b->estimated_amount, 2) }}</td>
                     <td class="px-4 py-3"><span class="px-2 py-1 rounded text-xs bg-gray-100 text-gray-700 capitalize">{{ str_replace('_', ' ', $b->status) }}</span></td>
                 </tr>
             @endforeach

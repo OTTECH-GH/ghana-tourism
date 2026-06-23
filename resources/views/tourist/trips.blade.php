@@ -5,8 +5,8 @@
     <div class="flex justify-between items-center mb-8">
         <h1 class="text-3xl font-bold text-gray-800">My Trips</h1>
         <div class="flex gap-3">
-            <a href="{{ route('tourist.bookings') }}" class="text-emerald-600 hover:text-emerald-700 font-medium">My Bookings</a>
-            <a href="{{ route('transport.book') }}" class="bg-emerald-600 text-white px-4 py-2 rounded-lg hover:bg-emerald-700 text-sm">Book New Trip</a>
+            <a href="{{ route('tourist.bookings') }}" class="text-ghana-green hover:text-ghana-green font-medium">My Bookings</a>
+            <a href="{{ route('transport.book') }}" class="bg-ghana-green text-white px-4 py-2 rounded-lg hover:bg-primary-700 text-sm">Book New Trip</a>
         </div>
     </div>
 
@@ -19,7 +19,7 @@
                             <div class="flex items-center gap-3">
                                 <h3 class="font-bold text-gray-800 text-lg">Trip {{ $booking->booking_reference }}</h3>
                                 <span class="px-2 py-1 rounded text-xs font-medium
-                                    {{ $booking->status === 'completed' ? 'bg-emerald-100 text-emerald-700' : '' }}
+                                    {{ $booking->status === 'completed' ? 'bg-green-50 text-ghana-green' : '' }}
                                     {{ $booking->status === 'pending' ? 'bg-yellow-100 text-yellow-700' : '' }}
                                     {{ $booking->status === 'accepted' ? 'bg-blue-100 text-blue-700' : '' }}
                                     {{ $booking->status === 'in_progress' ? 'bg-purple-100 text-purple-700' : '' }}
@@ -43,7 +43,7 @@
                             </div>
                         </div>
                         <div class="text-right">
-                            <div class="text-2xl font-bold text-emerald-600">GHS {{ number_format($booking->final_amount ?? $booking->estimated_amount, 2) }}</div>
+                            <div class="text-2xl font-bold text-ghana-green">GHS {{ number_format($booking->final_amount ?? $booking->estimated_amount, 2) }}</div>
                             <div class="text-xs text-gray-500">{{ $booking->final_amount ? 'Final' : 'Estimated' }}</div>
                             @if($booking->status === 'pending')
                                 <form action="{{ route('tourist.cancel-trip', $booking) }}" method="POST" class="mt-2">
@@ -60,7 +60,7 @@
     @else
         <div class="text-center py-16 bg-white rounded-xl shadow-sm">
             <p class="text-gray-500 text-lg mb-4">You haven't booked any trips yet.</p>
-            <a href="{{ route('transport.book') }}" class="bg-emerald-600 text-white px-6 py-3 rounded-lg hover:bg-emerald-700">Book a Trip</a>
+            <a href="{{ route('transport.book') }}" class="bg-ghana-green text-white px-6 py-3 rounded-lg hover:bg-primary-700">Book a Trip</a>
         </div>
     @endif
 </div>

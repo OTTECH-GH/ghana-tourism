@@ -5,10 +5,10 @@
     <div class="flex justify-between items-center mb-8">
         <div>
             <h1 class="text-3xl font-bold text-gray-800">Driver Dashboard</h1>
-            <p class="text-gray-500">Status: <span class="font-medium {{ $driver->status === 'approved' ? 'text-emerald-600' : 'text-yellow-600' }}">{{ ucfirst($driver->status) }}</span></p>
+            <p class="text-gray-500">Status: <span class="font-medium {{ $driver->status === 'approved' ? 'text-ghana-green' : 'text-yellow-600' }}">{{ ucfirst($driver->status) }}</span></p>
         </div>
         <div class="flex gap-3">
-            <a href="{{ route('driver.available-trips') }}" class="bg-emerald-600 text-white px-4 py-2 rounded-lg hover:bg-emerald-700 text-sm">Available Trips</a>
+            <a href="{{ route('driver.available-trips') }}" class="bg-ghana-green text-white px-4 py-2 rounded-lg hover:bg-primary-700 text-sm">Available Trips</a>
             <a href="{{ route('driver.earnings') }}" class="bg-white border border-gray-300 text-gray-700 px-4 py-2 rounded-lg hover:bg-gray-50 text-sm">Earnings</a>
         </div>
     </div>
@@ -30,10 +30,10 @@
     </div>
 
     @if($activeTrip)
-        <div class="bg-emerald-50 border-2 border-emerald-200 rounded-xl p-6 mb-8">
+        <div class="bg-ghana-green/5 border-2 border-ghana-green/20 rounded-xl p-6 mb-8">
             <div class="flex justify-between items-start">
                 <div>
-                    <h2 class="text-lg font-semibold text-emerald-800 mb-2">Active Trip</h2>
+                    <h2 class="text-lg font-semibold text-primary-700 mb-2">Active Trip</h2>
                     <p class="text-gray-700">Passenger: {{ $activeTrip->user->name }}</p>
                     <p class="text-gray-600 text-sm">From: {{ $activeTrip->pickup_location }}</p>
                     <div class="mt-2">
@@ -59,10 +59,10 @@
                     <div class="text-sm text-gray-500">{{ $trip->booking_reference }} &middot; {{ $trip->trip_date->format('M d, Y') }}</div>
                 </div>
                 <div class="flex items-center gap-3">
-                    <span class="font-bold text-emerald-600">GHS {{ number_format($trip->final_amount ?? $trip->estimated_amount, 2) }}</span>
+                    <span class="font-bold text-ghana-green">GHS {{ number_format($trip->final_amount ?? $trip->estimated_amount, 2) }}</span>
                     <span class="px-2 py-1 rounded text-xs bg-gray-100 text-gray-700 capitalize">{{ str_replace('_', ' ', $trip->status) }}</span>
                     @if($trip->status === 'accepted')
-                        <form action="{{ route('driver.start-trip', $trip) }}" method="POST">@csrf @method('PATCH')<button class="text-emerald-600 text-sm hover:text-emerald-800">Start</button></form>
+                        <form action="{{ route('driver.start-trip', $trip) }}" method="POST">@csrf @method('PATCH')<button class="text-ghana-green text-sm hover:text-primary-700">Start</button></form>
                     @endif
                 </div>
             </div>
